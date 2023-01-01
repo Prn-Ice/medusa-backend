@@ -1,4 +1,7 @@
-dist
-node_modules
+# DIRS
 
-npm-debug.log
+data/
+dist/
+node_modules/
+
+*.sql

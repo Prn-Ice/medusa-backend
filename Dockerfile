@@ -1,21 +1,19 @@
-FROM node:17.1.0
+# Set the base image to Node 17.1.0-alpine
+FROM node:17.1.0-alpine
 
+# Set the working directory
 WORKDIR /app/medusa
 
+# Copy the necessary files
 COPY package.json .
 COPY develop.sh .
 COPY yarn.* .
 
-RUN apt-get update
+# Install dependencies and the medusa-cli
+RUN apk update && yarn && yarn global add @medusajs/medusa-cli@latest
 
-RUN apt-get install -y python
-
-RUN npm install -g npm@8.1.2
-
-RUN npm install -g @medusajs/medusa-cli@latest
-
-RUN npm install
-
+# Add the remaining files
 COPY . .
 
-ENTRYPOINT ["./develop.sh"]
+# Set the default command to run when the container starts
+ENTRYPOINT ["sh", "develop.sh"]

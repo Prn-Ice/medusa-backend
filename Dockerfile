@@ -9,8 +9,14 @@ COPY package.json .
 COPY develop.sh .
 COPY yarn.* .
 
-# Install dependencies and the medusa-cli
-RUN apk update && yarn && yarn global add @medusajs/medusa-cli@latest
+# Run the apk update command to update package information
+RUN apk update
+
+# Install dependencies
+RUN yarn --network-timeout 1000000
+
+# Install the medusa-cli
+RUN yarn global add @medusajs/medusa-cli@latest
 
 # Add the remaining files
 COPY . .

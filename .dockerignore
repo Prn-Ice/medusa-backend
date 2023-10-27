@@ -1,10 +1,10 @@
 # DIRS
 
-data/
+#data/
 dist/
 node_modules/
 
 package-lock.json
-yarn.lock
+#yarn.lock
 
 *.sql

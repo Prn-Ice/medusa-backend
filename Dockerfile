@@ -1,4 +1,4 @@
-# Set the base image to Node 17.1.0-alpine
+# Set the base image to Node 21.0.0-alpine
 FROM node:17.1.0-alpine
 
 # Set the working directory
